@@ -1,0 +1,68 @@
+/* filepath: c:\Users\naikd\OneDrive\Desktop\Daivesh Projects\Aichatbot_React_Node\client\src\components\SuggestionMiniScreen.css */
+.suggestion-mini-screen {
+    position: absolute;
+    bottom: 100%; /* Position above the input container */
+    left: 0;
+    transform: translateY(-20px); /* Increased gap above the bulb icon */
+    width: 300px; /* Or a width that suits your design */
+    max-height: 400px; /* Limit height */
+    overflow-y: auto; /* Scroll if content exceeds max-height */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    z-index: 1001; /* Ensure it's above other elements like chat history */
+    color: var(--text-color, #333); /* Ensure text color is dark */
+}
+
+.suggestion-mini-screen h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: var(--primary-accent-color, #005f73); /* Use accent color */
+}
+
+.suggestion-mini-screen ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.suggestion-mini-screen li {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    transition: background-color 0.2s ease;
+    color: var(--text-color, #333); /* Ensure text color is dark */
+}
+
+.suggestion-mini-screen li:hover {
+    background-color: #f0f0f0;
+}
+
+.suggestion-mini-screen p {
+    font-size: 0.85em;
+    color: var(--secondary-text-color, #555);
+    margin-top: 15px;
+    text-align: center;
+}
+
+.close-mini-screen {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--secondary-text-color, #777);
+    padding: 0;
+    line-height: 1;
+}
+
+.close-mini-screen:hover {
+    color: var(--text-color, #333);
+}

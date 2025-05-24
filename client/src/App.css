@@ -1,0 +1,839 @@
+/* filepath: c:\\Users\\naikd\\OneDrive\\Desktop\\Daivesh Projects\\Aichatbot_React_Node\\client\\src\\App.css */
+/* Global Resets and Root Variables */
+:root {
+  --background-color: #FFFFFF;
+  --text-color: #000000 !important; /* UPDATED TO BLACK */
+  --text-color-black: #000000 !important; /* Already black, ensured important */
+  --primary-accent-color: #000000 !important; /* UPDATED TO BLACK as per request */
+  --secondary-text-color: #000000 !important; /* UPDATED TO BLACK */
+  --button-text-color: #FFFFFF;
+  --panel-background-color: #FFFFFF;
+  --border-color: #DCDCDC; 
+  --header-footer-bg: #f0f2f5; 
+  --hover-button-bg-color: #333333; /* Darker grey for hover if primary is black */
+  --error-color: #e74c3c;
+
+  /* WhatsApp Theme Variables */
+  --whatsapp-outgoing-bg: #DCF8C6; 
+  --whatsapp-incoming-bg: #FFFFFF; 
+  --whatsapp-chat-background: #E5DDD5; 
+  --whatsapp-text-color: #000000 !important; /* Ensured important */
+  --whatsapp-meta-text-color: rgba(0, 0, 0, 0.6); /* Slightly darker meta text */
+  --whatsapp-link-color: #0000EE !important; /* Explicitly set link color if primary accent is black */
+  --whatsapp-send-button-bg: #005E54; 
+  --whatsapp-send-button-hover-bg: #004C43;
+
+  --font-family-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  /* overflow: hidden; REMOVED to allow page content to scroll */
+}
+
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--background-color);
+  color: var(--text-color); /* This will now be black */
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-y: auto; /* Ensure body itself can scroll if content overflows */
+}
+
+/* Main App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Header and Navbar */
+.app-header-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background-color: var(--panel-background-color);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.navbar-brand a {
+  /* color: var(--primary-accent-color); */ /* This would be black now */
+  color: #00008B !important; /* Restore to Dark Blue if desired, or keep black */
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  /* color: var(--primary-accent-color); */ /* This would be black now */
+  color: #00008B !important; /* Restore to Dark Blue for hover/active, or keep black */
+  background-color: #eef2f7;
+}
+
+/* Main Content Area - This will host the two panels */
+.main-content-area {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden; /* Children will manage their own scroll */
+  background-color: var(--background-color);
+}
+
+/* Chat Dashboard Page - Container for SideChatbox and MainChatPanel */
+.chat-dashboard-page {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* SideChatbox (Left Panel) */
+.side-chatbox {
+  flex: 0 0 320px;
+  height: 100%;
+  padding: 1.5rem;
+  background-color: var(--panel-background-color);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.side-chatbox h3 {
+  /* color: var(--primary-accent-color); */ /* This would be black now */
+  color: #00008B !important; /* Restore to Dark Blue, or keep black */
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.side-chatbox p,
+.side-chatbox li {
+  font-size: 0.9rem;
+  color: var(--secondary-text-color); /* Use secondary for less emphasis */
+  margin-bottom: 0.75rem;
+}
+.side-chatbox ul {
+  list-style-position: inside;
+  padding-left: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.side-chatbox > p:last-child { /* Tip styling */
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+}
+
+
+/* MainChatPanel (Right Panel) - WhatsApp Style */
+.main-chat-panel {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* padding: 0; Remove padding, chat-history will handle it */
+  background-color: var(--whatsapp-chat-background); /* WhatsApp background */
+}
+
+.main-chat-panel-header {
+  /* This header might be restyled or integrated differently for a pure WhatsApp look */
+  padding: 10px 16px;
+  background-color: var(--header-footer-bg); /* WhatsApp-like header color */
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.main-chat-panel-header h1 {
+  font-size: 1.25rem; /* Slightly smaller */
+  color: var(--text-color-black);
+  font-weight: 500;
+  margin: 0;
+}
+.main-chat-panel-header .tagline {
+  font-size: 0.8rem;
+  color: var(--secondary-text-color);
+  margin-left: 0; /* Remove margin if h1 is also present */
+}
+
+/* Chat History - WhatsApp Style */
+.chat-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 12px; /* Padding inside the chat area */
+  display: flex;
+  flex-direction: column;
+}
+
+/* New message-row for alignment */
+.message-row {
+    display: flex;
+    margin-bottom: 3px; /* Small gap between consecutive messages from same sender if needed */
+    width: 100%;
+}
+.message-row.message-user {
+    justify-content: flex-end;
+}
+.message-row.message-ai, .message-row.message-error {
+    justify-content: flex-start;
+}
+
+/* Sender Label Styling - Inside Bubble */
+.sender-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.chat-message.user .sender-label {
+  color: #000000 !important; /* Explicitly black for "You" label */
+}
+
+.chat-message.ai .sender-label {
+  color: #000000 !important; /* Explicitly black for "ChatAI" label (was primary-accent) */
+}
+
+.chat-message.loading-indicator .sender-label {
+    color: #000000 !important; /* Explicitly black */
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* Sender Label Styling */
+.sender-label {
+  font-size: 0.75rem; /* Small text for the label */
+  color: var(--secondary-text-color); /* Dark grey, but not black */
+  margin-bottom: 2px; /* Space between label and bubble */
+  display: block; /* Ensure it takes its own line */
+}
+
+.message-row.user-row .sender-label {
+  text-align: right;
+  margin-right: 5px; /* Align with the bubble */
+}
+
+.message-row.ai-row .sender-label,
+.message-row.error-row .sender-label { /* Assuming errors also show 'ChatAI' or a similar label */
+  text-align: left;
+  margin-left: 5px; /* Align with the bubble */
+}
+
+/* Message Bubbles - WhatsApp Style - Main Structure */
+.chat-message { /* This is the main bubble class used in MainChatPanel.jsx */
+  padding: 7px 12px; /* Slightly more horizontal padding */
+  border-radius: 7.5px;
+  max-width: 75%;
+  word-wrap: break-word;
+  line-height: 1.4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-size: 0.9rem;
+  margin-bottom: 8px; /* Original margin */
+}
+
+/* User Message Bubble */
+.chat-message.user {
+  background-color: var(--whatsapp-outgoing-bg); /* Light green */
+  /* color: var(--whatsapp-text-color) !important; */ /* Temporarily override for diagnostics */
+  color: #000002 !important; /* DIAGNOSTIC COLOR 1 (for the bubble itself) */
+}
+
+/* Target p elements directly inside user messages, common for ReactMarkdown output */
+.chat-message.user p {
+  /* color: var(--whatsapp-text-color) !important; */ /* Temporarily override for diagnostics */
+  color: #000003 !important; /* DIAGNOSTIC COLOR 2 (for paragraphs) */
+}
+
+/* Target div elements directly inside user messages, another possibility for ReactMarkdown's root, excluding sender-label */
+.chat-message.user div:not(.sender-label) {
+  /* color: var(--whatsapp-text-color) !important; */ /* Temporarily override for diagnostics */
+  color: #000004 !important; /* DIAGNOSTIC COLOR 3 (for divs) */
+}
+
+/* Target span elements directly inside user messages, excluding timestamp */
+.chat-message.user span:not(.timestamp) {
+  /* color: var(--whatsapp-text-color) !important; */ /* Temporarily override for diagnostics */
+  color: #000005 !important; /* DIAGNOSTIC COLOR 4 (for spans) */
+}
+
+.chat-message.user > *:not(.sender-label):not(.timestamp):not(a):not(pre):not(code) {
+    /* color: var(--whatsapp-text-color) !important; */ /* Temporarily override for diagnostics */
+    color: #000006 !important; /* DIAGNOSTIC COLOR 5 (for any other direct child) */
+}
+
+
+/* Ensure sender label is truly black */
+.chat-message.user .sender-label {
+  color: #000000 !important;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Keep link and code styling separate as they are specific and should work */
+.chat-message.user a {
+    color: var(--whatsapp-link-color) !important;
+    text-decoration: underline !important;
+}
+.chat-message.user pre {
+  background-color: #f0f0f0 !important;
+  color: #333333 !important; /* This is a dark grey, not pure black */
+  padding: 0.6rem !important;
+  border-radius: 4px !important;
+  overflow-x: auto !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+  font-size: 0.85em !important;
+  margin: 0.5em 0 !important;
+  border: 1px solid #ddd !important;
+}
+.chat-message.user code:not(pre > code) { /* Inline code */
+  background-color: #e0e0e0 !important;
+  color: #333333 !important; /* This is a dark grey, not pure black */
+  padding: 0.2em 0.4em !important;
+  border-radius: 3px !important;
+  font-size: 0.85em !important;
+}
+
+/* AI Message Bubble */
+.chat-message.ai {
+  background-color: var(--whatsapp-incoming-bg); /* White */
+  color: var(--whatsapp-text-color) !important; /* Black text */
+}
+
+/* Error Message Bubble (if styled differently from AI) */
+.chat-message.error-message { /* Class for error messages from AI */
+  background-color: #ffebee; /* Lighter red for error */
+  color: #c0392b !important; /* Darker red text for errors */
+  border: 1px solid #c0392b;
+}
+.chat-message.error-message p {
+    color: #c0392b !important;
+}
+
+/* Tails for messages (Optional, kept from previous structure) */
+.chat-message.user::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  right: -6px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 10px 10px;
+  border-color: transparent transparent var(--whatsapp-outgoing-bg) transparent;
+}
+
+.chat-message.ai::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: -6px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 0;
+  border-color: transparent var(--whatsapp-incoming-bg) transparent transparent;
+}
+.chat-message.error-message::after {
+    display: none; /* No tail for errors or style differently */
+}
+
+/* Timestamp styling */
+.timestamp {
+    font-size: 0.7rem;
+    color: var(--whatsapp-meta-text-color);
+    text-align: right;
+    margin-top: 4px;
+    display: block;
+    clear: both;
+}
+.chat-message.ai .timestamp {
+    /* text-align: left; */ /* If sender name was also there */
+}
+
+/* Markdown specific styles within AI Message Bubbles */
+/* Ensure these elements inherit or use dark text */
+.chat-message.ai p,
+.chat-message.ai div,
+.chat-message.ai span,
+.chat-message.ai strong,
+.chat-message.ai em {
+  color: inherit !important; /* Inherit black text from .chat-message.ai */
+}
+
+.chat-message.ai ul,
+.chat-message.ai ol {
+  margin-left: 1.2rem; /* Indent lists */
+  padding-left: 0.5rem;
+  color: inherit !important;
+}
+
+.chat-message.ai li {
+  margin-bottom: 0.2rem;
+  color: inherit !important;
+}
+
+.chat-message.ai pre {
+  background-color: #f0f0f0 !important;
+  color: #333333 !important;
+  padding: 0.6rem !important;
+  border-radius: 4px !important;
+  overflow-x: auto !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+  font-size: 0.85em !important; /* Slightly larger code font */
+  margin: 0.5em 0 !important;
+  border: 1px solid #ddd !important;
+}
+
+.chat-message.ai code:not(pre > code) { /* Inline code */
+  background-color: #e0e0e0 !important;
+  color: #333333 !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 3px !important;
+  font-size: 0.85em !important;
+}
+
+.chat-message.ai blockquote {
+  border-left: 3px solid #00008B !important; /* Keep accent color for border, not text */
+  margin: 0.5em 0 0.5em 0.5em !important;
+  padding-left: 0.8em !important;
+  color: var(--text-color) !important; /* Should be black now */
+  font-style: italic !important;
+}
+
+.chat-message.ai a {
+  color: var(--whatsapp-link-color) !important;
+  text-decoration: underline !important;
+}
+
+chat-message.ai table {
+    width: auto;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 0.9em;
+    color: #333 !important;
+}
+chat-message.ai th, .chat-message.ai td {
+    border: 1px solid #ddd !important;
+    padding: 6px 10px !important;
+    color: #333 !important;
+}
+chat-message.ai th {
+    background-color: #f2f2f2 !important;
+    font-weight: bold;
+}
+
+/* Chat Input Area - WhatsApp Style */
+.chat-input-container {
+  display: flex;
+  align-items: center; /* Vertically center items in the input bar */
+  gap: 8px; /* Gap between textarea and button */
+  padding: 8px 12px;
+  background-color: var(--header-footer-bg); /* Similar to WhatsApp input area background */
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  position: relative; /* Crucial for positioning child SuggestionMiniScreen */
+}
+
+.chat-input-container textarea {
+  flex-grow: 1;
+  resize: none;
+  min-height: 42px; /* Adjusted height */
+  max-height: 120px; /* Adjusted max height */
+  overflow-y: auto;
+  line-height: 1.4;
+  padding: 10px 15px; /* Padding inside textarea */
+  font-size: 0.95rem; /* Textarea font size */
+  border: 1px solid transparent; /* No border by default */
+  border-radius: 21px; /* More rounded for WhatsApp look */
+  font-family: var(--font-family-main);
+  color: var(--text-color-black) !important; /* Ensure black text */
+  background-color: #FFFFFF; /* White background for textarea */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Subtle shadow */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-input-container textarea:focus {
+  border-color: var(--primary-accent-color); /* Or a subtle blue */
+  box-shadow: 0 0 0 2px rgba(0, 100, 255, 0.1); /* Focus ring */
+  outline: none;
+}
+
+.chat-input-container textarea::placeholder {
+  color: var(--secondary-text-color);
+  opacity: 0.8; /* Slightly more subtle placeholder */
+}
+
+.chat-input-container button {
+  align-self: flex-end; /* Keep button aligned to bottom with textarea */
+  /* width: 44px;  REMOVE - let padding and aspect ratio define size */
+  /* height: 44px; REMOVE */
+  min-width: 44px; /* Ensure a minimum tap target size */
+  padding: 10px; /* Add padding for a larger clickable area */
+  font-size: 1rem;
+  background-color: var(--whatsapp-send-button-bg); /* WhatsApp green */
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 8px; /* Rectangular with curved edges */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1px; /* Align with textarea bottom */
+  aspect-ratio: 1 / 1; /* Make it square-ish if width is not set */
+}
+
+.chat-input-container button.send-button { /* More specific selector for the send button if needed */
+    border-radius: 8px; /* Explicitly set for send button */
+    padding: 10px 12px; /* Adjust padding for rectangular shape if icon is wide */
+    aspect-ratio: auto; /* Allow rectangular shape */
+}
+
+.chat-input-container button:hover {
+  background-color: var(--whatsapp-send-button-hover-bg);
+}
+.chat-input-container button:disabled {
+  background-color: #B0C4DE; /* Keep disabled style */
+  cursor: not-allowed;
+}
+/* Ensure the main send button is styled correctly, ChatAIButton has its own class */
+.chat-input-container > button:not(.chatai-input-action-button) svg { /* Target only the send button's SVG */
+  width: 22px; /* Adjusted icon size */
+  height: 22px; /* Adjusted icon size */
+  fill: var(--button-text-color);
+}
+
+/* ChatAI Floating Action Button (FAB) styles moved to ChatAIButton.css */
+/* Styles for .chatai-fab are removed from here */
+
+/* Loading Indicator within message bubble */
+.message.loading-indicator {
+    font-style: italic;
+    color: var(--secondary-text-color);
+    background-color: var(--whatsapp-incoming-bg); /* Same as AI messages */
+    /* No specific loading indicator style beyond being an AI message */
+}
+.loading-indicator { /* This might be a general class, ensure it doesn't conflict */
+  /* If this is for the old global indicator, it might not be needed if loading is shown in-chat */
+}
+.error-indicator { /* Similarly, for global error indicator */
+}
+
+
+/* Adjustments for .page-content to ensure it doesn't inherit chat styles */
+.page-content {
+  flex-grow: 1;
+  overflow-y: auto; /* Allow vertical scrolling for the content area */
+  /* padding: 2rem; */ /* Removed padding from here */
+  /* background-color: var(--background-color); */ /* Already set on body */
+  /* color: var(--text-color); */ /* Already set on body */
+  display: flex; /* Added to help center content like FeaturesPage */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  width: 100%; /* Ensure it takes full width */
+  box-sizing: border-box;
+}
+.page-content p,
+.page-content div,
+.page-content span,
+.page-content li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--text-color-black) !important; /* Changed to --text-color-black and kept !important */
+}
+.page-content strong {
+  /* color: var(--primary-accent-color) !important; */ /* This would be black now */
+  color: #000000 !important; /* Keep black or choose a subtle emphasis color */
+}
+
+/* Features Page Specific Styles */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.feature-card {
+  background-color: var(--panel-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+  /* color: var(--primary-accent-color) !important; */ /* This would be black now */
+  color: #00008B !important; /* Restore to Dark Blue, or keep black */
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* Paragraphs within feature cards should also use the default text color */
+.feature-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-color-black) !important; /* Changed to --text-color-black and added !important */;
+}
+
+
+/* Footer */
+footer {
+  padding: 1.5rem 2rem;
+  background-color: var(--header-footer-bg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+footer .footer-left,
+footer .footer-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+footer .footer-left {
+  flex-grow: 1;
+}
+
+footer .footer-right {
+  /* Social icons or additional links can go here */
+}
+
+/* Context Menu Styles - Keep as is for now, can be themed later if needed */
+.context-menu {
+  position: absolute;
+  background-color: #ffffff !important; /* Ensure white background */
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 5px 0;
+  border-radius: 5px;
+  min-width: 150px;
+  /* color: var(--text-color-black) !important; */ /* Covered by li items */
+}
+
+.context-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.context-menu ul li {
+  padding: 8px 15px !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  color: var(--text-color-black) !important; /* Force black text */
+  background-color: #ffffff !important; /* Ensure item background is white */
+}
+
+.context-menu ul li:hover {
+  background-color: #f0f0f0 !important; /* Light grey hover */
+  /* color: var(--primary-accent-color) !important; */ /* This would be black now */
+  color: #00008B !important; /* Restore to Dark Blue for hover, or keep black */
+}
+
+.chat-message p,
+.chat-message div /* For ReactMarkdown output */ {
+  color: #333333 !important; /* Darker text for chat messages */
+  margin-bottom: 5px; /* Ensure some spacing if markdown adds paragraphs */
+}
+
+.chat-message.ai p,
+.chat-message.ai div {
+  color: #333333 !important; /* Explicitly for AI messages if needed */
+}
+
+.chat-message.user p,
+.chat-message.user div {
+  color: #ffffff !important; /* User messages are on dark blue, so white text is fine */
+}
+
+/* Ensure error messages from AI are also dark if on light background */
+.chat-message.ai.error-message p {
+  color: #D8000C !important; /* A common error red, but ensure it's dark enough */
+  background-color: #FFD2D2 !important; /* Light red background for errors */
+}
+
+
+/* Responsive adjustments */
+/* ... existing responsive styles ... */
+/* May need to adjust responsive styles for the new chat layout if issues arise on small screens */
+
+@media (max-width: 768px) {
+  /* ... existing responsive styles ... */
+
+  .main-chat-panel-header {
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+  }
+  .main-chat-panel-header h1 {
+    font-size: 1.1rem;
+  }
+   .main-chat-panel-header .tagline {
+    display: none; /* Hide tagline on very small screens to save space */
+  }
+
+  .message {
+    max-width: 85%; /* Allow slightly wider messages on mobile */
+    font-size: 0.85rem;
+  }
+  .message-meta {
+    font-size: 0.65rem;
+  }
+
+  .chat-input-container textarea {
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .chat-input-container button {
+    width: 40px;
+    height: 40px;
+  }
+  .chat-input-container button svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* AI Message Text Visibility - Refined Approach */
+.message.ai {
+  background-color: var(--whatsapp-incoming-bg); /* White background */
+  color: var(--whatsapp-text-color) !important; /* Base text color black, important for the container */
+  border-bottom-left-radius: 7.5px;
+}
+
+/* Remove the previous overly broad selectors for p, div, span etc. */
+
+/* Markdown specific styles within WhatsApp bubbles - Restored and ensured dark text */
+.message.ai pre, .message.user pre {
+  background-color: #f0f0f0 !important;
+  color: #333333 !important; /* Dark text for code */
+  padding: 0.5rem !important;
+  border-radius: 4px !important;
+  overflow-x: auto !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+  font-size: 0.8em !important;
+  margin: 0.5em 0 !important;
+  border: 1px solid #ddd !important;
+}
+
+.message.ai code:not(pre > code), .message.user code:not(pre > code) { /* Inline code */
+  background-color: #e0e0e0 !important;
+  color: #333333 !important; /* Dark text for inline code */
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
+  font-size: 0.8em !important;
+}
+
+.message.ai blockquote, .message.user blockquote {
+  border-left: 3px solid var(--primary-accent-color) !important;
+  margin: 0.5em 0 0.5em 0.5em !important;
+  padding-left: 0.8em !important;
+  color: #555555 !important; /* Dark grey for blockquote text */
+  font-style: italic !important;
+}
+
+.message.ai ul, .message.ai ol, .message.user ul, .message.user ol {
+  margin-left: 1rem !important;
+  padding-left: 0.5rem !important;
+  color: inherit !important; /* Inherit black from .message.ai */
+}
+
+.message.ai li, .message.user li {
+  margin-bottom: 0.2rem !important;
+  color: inherit !important; /* Inherit black from .message.ai */
+}
+
+.message.ai a {
+    color: var(--whatsapp-link-color) !important;
+    text-decoration: underline !important;
+}
+
+/* Paragraphs and divs within AI messages should inherit the black color from .message.ai */
+.message.ai p,
+.message.ai div {
+    color: inherit !important;
+}
+
+/* Context Menu Text Visibility - Reaffirm and ensure specificity (from previous attempt, should be good) */
+.context-menu {
+  position: absolute;
+  background-color: #ffffff !important; /* Ensure white background */
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 5px 0;
+  border-radius: 5px;
+  min-width: 150px;
+}
+
+.context-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.context-menu ul li {
+  padding: 8px 15px !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  color: var(--text-color-black) !important; /* Force black text */
+  background-color: #ffffff !important; /* Ensure item background is white */
+}
+
+.context-menu ul li:hover {
+  background-color: #f0f0f0 !important; /* Light grey hover */
+  /* color: var(--primary-accent-color) !important; */ /* This would be black now */
+  color: #00008B !important; /* Restore to Dark Blue for hover, or keep black */
+}
+
+/* ... rest of App.css ... */

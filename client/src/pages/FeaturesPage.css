@@ -1,0 +1,73 @@
+/* filepath: c:\Users\naikd\OneDrive\Desktop\Daivesh Projects\Aichatbot_React_Node\client\src\pages\FeaturesPage.css */
+.features-page {
+    padding: 20px; /* Keep overall padding for the page */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This will center the .features-grid horizontally */
+    color: var(--text-color, #333); /* Ensure text color is applied */
+    width: 100%; /* Ensure features page takes full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.features-title {
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    color: var(--primary-accent-color, #005f73); /* Use accent color */
+    text-align: center; /* Ensure title itself is centered */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Space between cards */
+    max-width: 1200px; /* Max width of the grid */
+    width: 100%; /* Make the grid take full available width up to its max-width */
+    /* margin: 0 auto; /* This is good for block-level centering if parent isn't flex */
+}
+
+.feature-card {
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: left; /* Align text to the left within cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column; /* Stack icon, name, description vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text within the card */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon-container {
+    background-color: var(--primary-accent-color, #005f73); /* Accent color background for icon */
+    color: var(--button-text-color, #ffffff); /* White icon color */
+    border-radius: 50%; /* Circular background */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.feature-icon {
+    font-size: 2em; /* Larger icon */
+}
+
+.feature-name {
+    font-size: 1.4em;
+    color: var(--primary-accent-color, #005f73);
+    margin-bottom: 10px;
+}
+
+.feature-description {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--secondary-text-color, #555);
+}

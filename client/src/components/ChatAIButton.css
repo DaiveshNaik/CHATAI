@@ -1,0 +1,30 @@
+/* ChatAI Button inside the input area */
+.chatai-input-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  background-color: transparent; /* Or a subtle background */
+  color: var(--primary-accent-color); /* Icon color */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 8px; /* Space between this button and the textarea */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.chatai-input-action-button:hover {
+  background-color: rgba(0, 0, 139, 0.1); /* Subtle hover for dark blue accent */
+  color: var(--hover-button-bg-color);
+}
+
+.chatai-input-action-button svg {
+  fill: currentColor; /* Inherit color from button's text color */
+  width: 22px; /* Adjust icon size */
+  height: 22px;
+}
+
+/* Remove fixed positioning styles if they were here previously */
+/* No responsive adjustments needed here as it's part of a flex container that handles responsiveness */

@@ -1,0 +1,38 @@
+/* filepath: c:\Users\naikd\OneDrive\Desktop\Daivesh Projects\Aichatbot_React_Node\client\src\App.css */
+/* Add at the top or in index.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+    --primary-bg: #1A1D21;
+    --chat-area-bg: #23272D;
+    --user-message-bg: #36393F;
+    --bot-message-bg-start: #00DAC6; /* Teal accent */
+    --bot-message-bg-end: #00a093;
+    --text-color: #EAEAEA;
+    --accent-color: #00DAC6;
+    --input-field-bg: #2C2F33;
+    --input-border-color: #3a3d42;
+    --header-font: 'Orbitron', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--primary-bg);
+    font-family: var(--body-font);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* If chat is full screen */
+}
+
+#root { /* Ensure #root takes up space if body is flex container */
+    width: 100%;
+    height: 100%; /* Or adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ... rest of your existing App.css, which will be overridden or modified below ... */

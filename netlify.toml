@@ -1,0 +1,10 @@
+# filepath: Aichatbot_React_Node/netlify.toml
+[build]
+  command = "cd client && npm install && npm run build" # Or your client's build command
+  publish = "client/dist"    # Or your client's build output directory (e.g., client/build)
+  functions = "server"       # Tells Netlify your serverless functions are in the 'server' directory
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat" # Routes /api/... to your server.js function
+  status = 200
