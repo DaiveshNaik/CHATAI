@@ -49,7 +49,7 @@ app.post('/api/chat', async (req, res) => {
     try {
         const historyForApiCall = JSON.parse(JSON.stringify(chatHistory));
 
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
 
         const chat = model.startChat({
             history: historyForApiCall, 
