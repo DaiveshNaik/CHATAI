@@ -5,7 +5,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const serverless = require('serverless-http'); // Add this line
 
 const app = express();
-const port = process.env.PORT || 3001; // Use a different port than the React dev server
+// const port = process.env.PORT || 3001; // Use a different port than the React dev server
 
 // Middleware
 app.use(cors());
@@ -15,9 +15,7 @@ app.use(express.json());
 const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) {
     console.error("Error: GEMINI_API_KEY is not set in the .env file.");
-    process.exit(1); // Exit if API key is missing
-}
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    process.exit(1); // Exit if API key is missinconst genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Initialize chat history with a formatting instruction
 let chatHistory = [ // Changed from const to let
@@ -115,4 +113,4 @@ app.post('/api/chat', async (req, res) => {
 //   console.log(`Server listening on port ${PORT}`);
 // });
 
-module.exports.handler = serverless(app); // Add this line to export the handler
+module.exports.handler = serverless(app);
