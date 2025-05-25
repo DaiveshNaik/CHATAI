@@ -2,10 +2,9 @@ require('dotenv').config(); // Load environment variables from .env file
 const express = require('express');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-const serverless = require('serverless-http'); // Add this line
+const serverless = require('serverless-http');
 
 const app = express();
-// const port = process.env.PORT || 3001; // Use a different port than the React dev server
 
 // Middleware
 app.use(cors());
@@ -13,9 +12,17 @@ app.use(express.json());
 
 // Initialize Google Gemini AI
 const apiKey = process.env.GEMINI_API_KEY;
+
 if (!apiKey) {
-    console.error("Error: GEMINI_API_KEY is not set in the .env file.");
-    process.exit(1); // Exit if API key is missinconst genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    // This log will appear in Netlify Function logs if the key is missing from environment variables.
+    // The application will fail when trying to use genAI if the key is truly not set.
+    console.error("CRITICAL: GEMINI_API_KEY is not set in the environment variables. The application will not be able to connect to the Gemini API.");
+}
+
+// Initialize genAI. If apiKey is undefined here (because it wasn't set in Netlify's environment),
+// the constructor or subsequent API calls will likely throw an error,
+// which should be caught by the try/catch block in your API route.
+const genAI = new GoogleGenerativeAI(apiKey); // Use the apiKey variable from process.env
 
 // Initialize chat history with a formatting instruction
 let chatHistory = [ // Changed from const to let
