@@ -52,12 +52,12 @@ const MainChatPanel = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3001/api/chat', { // Corrected endpoint
+      const response = await fetch('/api/chat', { // MODIFIED LINE: Use relative path
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: newMessage.text }), // Send only the text
+        body: JSON.stringify({ message: newMessage.text, history: chatHistory.slice(-10) }), // Send only the text and recent history
       });
 
       if (!response.ok) {
@@ -171,10 +171,10 @@ const MainChatPanel = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3001/api/chat', { // Corrected endpoint
+      const response = await fetch('/api/chat', { // MODIFIED LINE: Use relative path
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: prompt }),
+        body: JSON.stringify({ message: prompt, history: chatHistory.slice(-10) }), // Pass history if needed by context actions
       });
 
       if (!response.ok) {
